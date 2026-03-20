@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy: #002147;
+    --navy-deep: #000a1e;
+    --orange: #E67E22;
+    --orange-dark: #944a00;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#944a00] text-white px-8 py-4 font-bold text-sm uppercase tracking-wider;
+    @apply hover:bg-[#E67E22] transition-colors duration-300;
+  }
+
+  .section-label {
+    @apply font-sans text-xs uppercase tracking-[0.25em] text-[#944a00] font-semibold;
+  }
+}
+
+::selection {
+  background-color: rgba(230, 126, 34, 0.3);
+  color: #002147;
+}
+
+*:focus-visible {
+  outline: 2px solid #E67E22;
+  outline-offset: 2px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #002147;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E67E22;
+}
