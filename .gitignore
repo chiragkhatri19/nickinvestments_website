@@ -43,3 +43,7 @@ coverage/
 
 # Misc
 *.log
+
+# Skills and Agents (local development only)
+.agents/
+skills-lock.json

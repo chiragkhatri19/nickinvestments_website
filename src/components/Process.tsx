@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { Phone, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 const steps = [
   {
@@ -38,7 +37,7 @@ export default function Process() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
@@ -46,17 +45,17 @@ export default function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative bg-[#f8f9fa] p-8"
+              className="relative bg-[#f8f9fa] p-8 hover:bg-[#f4f5f6] transition-colors duration-300"
             >
-              <div className="absolute top-0 left-0 w-16 h-16 bg-[#002147] flex items-center justify-center">
-                <span className="font-serif text-white text-lg font-bold">{step.number}</span>
+              <div className="absolute top-0 left-0 w-14 h-14 bg-[#002147] flex items-center justify-center">
+                <span className="font-serif text-white text-base font-bold tracking-wider">{step.number}</span>
               </div>
               
-              <div className="pt-12">
-                <h3 className="font-serif text-xl text-[#002147] mb-3">
+              <div className="pt-10 pl-4">
+                <h3 className="font-serif text-xl md:text-[22px] text-[#002147] mb-3 tracking-tight">
                   {step.title}
                 </h3>
-                <p className="text-[#555] leading-relaxed">
+                <p className="text-[#555] leading-relaxed text-[15px]">
                   {step.description}
                 </p>
               </div>
@@ -64,26 +63,26 @@ export default function Process() {
           ))}
         </div>
 
-        <div className="mt-16 p-8 bg-[#002147] flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 p-8 md:p-10 bg-[#002147] flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <h3 className="font-serif text-2xl text-white mb-2">
+            <h3 className="font-serif text-2xl md:text-3xl text-white mb-2">
               Ready to start your journey?
             </h3>
-            <p className="text-white/60">
+            <p className="text-white/50">
               Schedule a free consultation with our senior advisor.
             </p>
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             <a
               href="#contact"
-              className="flex items-center gap-2 bg-[#E67E22] text-white px-6 py-3 font-semibold hover:bg-[#d4711d] transition-colors"
+              className="flex items-center justify-center gap-2 bg-[#E67E22] text-white px-6 py-3.5 font-semibold hover:bg-[#d4711d] transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E67E22] focus-visible:ring-offset-2 focus-visible:ring-offset-[#002147]"
             >
               Get Started
               <ArrowRight size={16} />
             </a>
             <a
               href="tel:+919876543210"
-              className="flex items-center gap-2 border border-white/30 text-white px-6 py-3 font-medium hover:bg-white/10 transition-colors"
+              className="flex items-center justify-center gap-2 border border-white/20 text-white px-6 py-3.5 font-medium hover:bg-white/10 transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#002147]"
             >
               <Phone size={16} />
               Call Us

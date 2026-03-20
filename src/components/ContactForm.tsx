@@ -49,7 +49,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="py-24 lg:py-32 bg-white">
+    <section id="contact" className="py-20 lg:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
@@ -57,20 +57,20 @@ export default function ContactForm() {
               Get In Touch
             </p>
 
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#002147] mb-6 leading-tight">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#002147] mb-6 leading-tight tracking-tight">
               Start Your Journey With Us
             </h2>
 
-            <p className="text-[#555] text-lg leading-relaxed mb-10">
+            <p className="text-[#555] text-[17px] leading-relaxed mb-10">
               Schedule a complimentary consultation with our senior advisor. We'll discuss your goals and see how we can help.
             </p>
 
-            <div className="space-y-4 mb-10">
+            <div className="space-y-3 mb-10">
               <a
                 href="tel:+919876543210"
-                className="flex items-center gap-4 bg-[#002147] text-white px-6 py-4 font-medium hover:bg-[#003366] transition-colors"
+                className="flex items-center gap-4 bg-[#002147] text-white px-5 py-3.5 font-medium hover:bg-[#003366] transition-colors rounded"
               >
-                <Phone size={20} className="text-[#E67E22]" />
+                <Phone size={18} className="text-[#E67E22]" />
                 <span>Call: +91 98765 43210</span>
               </a>
 
@@ -78,35 +78,36 @@ export default function ContactForm() {
                 href="https://wa.me/919876543210?text=Hi, I'm interested in Nick Investments services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-[#25D366] text-white px-6 py-4 font-medium hover:bg-[#1ebe5d] transition-colors"
+                className="flex items-center gap-4 bg-[#25D366] text-white px-5 py-3.5 font-medium hover:bg-[#1ebe5d] transition-colors rounded"
               >
-                <MessageCircle size={20} />
+                <MessageCircle size={18} />
                 <span>WhatsApp Us</span>
               </a>
             </div>
 
-            <div className="pt-6 border-t border-[#002147]/10">
-              <p className="text-[#888] text-sm mb-2">Office Hours</p>
+            <div className="pt-5 border-t border-[#002147]/10">
+              <p className="text-[#888] text-sm mb-1.5">Office Hours</p>
               <p className="text-[#002147]">Monday - Saturday: 10:00 AM - 7:00 PM</p>
-              <p className="text-[#888] text-sm mt-4 mb-2">Location</p>
+              <p className="text-[#888] text-sm mt-4 mb-1.5">Location</p>
               <p className="text-[#002147]">Mumbai, Maharashtra, India</p>
             </div>
           </div>
 
-          <div className="bg-[#f8f9fa] p-8 md:p-10">
+          <div className="bg-[#f8f9fa] p-8 md:p-10 rounded-lg">
             {status === "success" ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
+                transition={{ duration: 0.3 }}
+                className="text-center py-10"
               >
-                <div className="w-16 h-16 bg-[#002147] flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle size={32} className="text-[#E67E22]" />
+                <div className="w-14 h-14 bg-[#002147] flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle size={28} className="text-[#E67E22]" />
                 </div>
-                <h3 className="font-serif text-2xl text-[#002147] mb-4">
+                <h3 className="font-serif text-2xl text-[#002147] mb-3">
                   Thank You
                 </h3>
-                <p className="text-[#555] mb-6">
+                <p className="text-[#555] mb-5">
                   Your inquiry has been received. Our advisor will contact you within 24 hours.
                 </p>
                 <button
@@ -114,7 +115,7 @@ export default function ContactForm() {
                     setStatus("idle")
                     setForm(initialState)
                   }}
-                  className="text-[#944a00] font-semibold text-sm hover:underline"
+                  className="text-[#944a00] font-semibold text-sm hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E67E22] focus-visible:ring-offset-2 rounded"
                 >
                   Submit Another Inquiry
                 </button>
@@ -122,7 +123,7 @@ export default function ContactForm() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
+                  <Label htmlFor="name" className="text-sm font-medium text-[#002147]">Full Name *</Label>
                   <Input
                     id="name"
                     name="name"
@@ -130,11 +131,12 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     placeholder="Your name"
+                    className="border-[#002147]/15 focus:border-[#002147] focus:ring-[#002147]/20"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email Address *</Label>
+                  <Label htmlFor="email" className="text-sm font-medium text-[#002147]">Email Address *</Label>
                   <Input
                     id="email"
                     name="email"
@@ -143,11 +145,12 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     placeholder="your.email@example.com"
+                    className="border-[#002147]/15 focus:border-[#002147] focus:ring-[#002147]/20"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Label htmlFor="phone" className="text-sm font-medium text-[#002147]">Phone Number *</Label>
                   <Input
                     id="phone"
                     name="phone"
@@ -156,16 +159,18 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     placeholder="+91 XXXXX XXXXX"
+                    className="border-[#002147]/15 focus:border-[#002147] focus:ring-[#002147]/20"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="investment">Investment Range</Label>
+                  <Label htmlFor="investment" className="text-sm font-medium text-[#002147]">Investment Range</Label>
                   <Select
                     id="investment"
                     name="investment"
                     value={form.investment}
                     onChange={handleChange}
+                    className="border-[#002147]/15 focus:border-[#002147] focus:ring-[#002147]/20"
                   >
                     {investmentOptions.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
@@ -174,7 +179,7 @@ export default function ContactForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message" className="text-sm font-medium text-[#002147]">Message</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -182,17 +187,18 @@ export default function ContactForm() {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Tell us about your investment goals..."
+                    className="border-[#002147]/15 focus:border-[#002147] focus:ring-[#002147]/20"
                   />
                 </div>
 
                 <Button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full"
+                  className="w-full mt-6"
                 >
                   {status === "submitting" ? (
                     <>
-                      <Loader2 size={18} className="animate-spin" />
+                      <Loader2 size={16} className="animate-spin" />
                       Submitting...
                     </>
                   ) : (

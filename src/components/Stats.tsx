@@ -58,15 +58,15 @@ function StatCard({ stat, index }: { stat: StatItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="text-center relative"
+      className="text-center px-8 py-10 lg:py-12"
     >
-      <div className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2">
+      <div className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 tracking-tight">
         <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
       </div>
       <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#E67E22] font-semibold mb-2">
         {stat.label}
       </p>
-      <p className="text-white/50 text-sm max-w-[160px] mx-auto">
+      <p className="text-white/40 text-sm max-w-[180px] mx-auto leading-relaxed">
         {stat.description}
       </p>
     </motion.div>
@@ -77,18 +77,20 @@ export default function Stats() {
   return (
     <section id="stats" data-testid="stats-section" className="py-20 lg:py-28 bg-[#002147]" aria-labelledby="stats-heading">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="text-center mb-14">
-          <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[#E67E22] mb-3">
+        <div className="text-center mb-16">
+          <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[#E67E22] mb-3 font-semibold">
             Track Record
           </p>
-          <h2 id="stats-heading" className="font-serif text-3xl md:text-4xl text-white">
+          <h2 id="stats-heading" className="font-serif text-3xl md:text-4xl lg:text-5xl text-white">
             Numbers That Define Our Legacy
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
           {stats.map((stat, i) => (
-            <StatCard key={stat.label} stat={stat} index={i} />
+            <div key={stat.label} className="bg-[#002147]">
+              <StatCard stat={stat} index={i} />
+            </div>
           ))}
         </div>
       </div>

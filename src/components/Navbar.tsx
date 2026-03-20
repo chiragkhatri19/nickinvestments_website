@@ -75,15 +75,15 @@ export default function Navbar() {
               </div>
             </motion.a>
 
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-1">
               {links.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`relative px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-md ${
                     activeLink === link.href
                       ? scrolled ? "text-[#E67E22]" : "text-[#ffb783]"
-                      : scrolled ? "text-[#002147]/80 hover:text-[#002147]" : "text-white/80 hover:text-white"
+                      : scrolled ? "text-[#002147]/70 hover:text-[#002147] hover:bg-[#002147]/5" : "text-white/70 hover:text-white hover:bg-white/10"
                   }`}
                   onMouseEnter={() => setActiveLink(link.href)}
                   onMouseLeave={() => setActiveLink("")}
@@ -92,7 +92,7 @@ export default function Navbar() {
                   {activeLink === link.href && (
                     <motion.div
                       layoutId="nav-underline"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-[2px] bg-[#E67E22] rounded-full"
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-[#E67E22] rounded-full"
                     />
                   )}
                 </a>
@@ -185,7 +185,7 @@ export default function Navbar() {
                 </div>
 
                 <nav className="flex-1 px-6 py-8">
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     {links.map((link, i) => (
                       <motion.a
                         key={link.href}
@@ -194,10 +194,10 @@ export default function Navbar() {
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="group flex items-center justify-between py-4 px-4 rounded-lg hover:bg-[#f8f9fa] transition-colors"
+                        className="group flex items-center justify-between py-3.5 px-4 rounded-lg hover:bg-[#f8f9fa] transition-colors focus-visible:ring-2 focus-visible:ring-[#E67E22] focus-visible:ring-offset-2"
                       >
                         <span className="text-[#002147] font-medium text-lg">{link.label}</span>
-                        <ArrowRight size={18} className="text-[#E67E22] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all" />
+                        <ArrowRight size={18} className="text-[#E67E22] opacity-0 group-hover:opacity-100 transform translate-x-[-8px] group-hover:translate-x-0 transition-all" />
                       </motion.a>
                     ))}
                   </div>

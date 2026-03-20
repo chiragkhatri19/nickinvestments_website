@@ -12,35 +12,35 @@ export default function Philosophy() {
               Our Philosophy
             </p>
 
-            <h2 id="philosophy-heading" className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#002147] leading-tight mb-6">
+            <h2 id="philosophy-heading" className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#002147] leading-tight mb-6 tracking-tight">
               Built on discipline, guided by experience.
             </h2>
 
-            <p className="text-[#555] text-lg leading-relaxed mb-8">
+            <p className="text-[#555] text-[17px] leading-relaxed mb-8">
               We believe wealth management is not about quick gains—it is about sustainable growth, careful planning, and building a legacy that endures. Our approach combines proven investment principles with personalized attention.
             </p>
 
-            <blockquote className="border-l-4 border-[#E67E22] pl-6 py-2 mb-8">
-              <p className="font-serif text-xl text-[#002147] italic">
+            <blockquote className="border-l-4 border-[#E67E22] pl-6 py-2 mb-10">
+              <p className="font-serif text-xl md:text-2xl text-[#002147] italic leading-relaxed">
                 "True wealth is the ability to live life on your own terms, with security and peace of mind."
               </p>
-              <footer className="text-[#888] text-sm mt-3 uppercase tracking-wider">
+              <footer className="text-[#888] text-xs mt-3 uppercase tracking-wider font-medium">
                 — Nick, Founder
               </footer>
             </blockquote>
 
-            <div className="flex flex-wrap gap-8">
+            <div className="flex flex-wrap gap-10">
               <div>
-                <div className="font-serif text-3xl font-bold text-[#002147]">30+</div>
-                <p className="text-[#888] text-sm">Years Experience</p>
+                <div className="font-serif text-3xl font-bold text-[#002147] tracking-tight">30+</div>
+                <p className="text-[#888] text-sm mt-1">Years Experience</p>
               </div>
               <div>
-                <div className="font-serif text-3xl font-bold text-[#002147]">14%</div>
-                <p className="text-[#888] text-sm">Avg. Returns</p>
+                <div className="font-serif text-3xl font-bold text-[#002147] tracking-tight">14%</div>
+                <p className="text-[#888] text-sm mt-1">Avg. Returns</p>
               </div>
               <div>
-                <div className="font-serif text-3xl font-bold text-[#002147]">SEBI</div>
-                <p className="text-[#888] text-sm">Registered</p>
+                <div className="font-serif text-3xl font-bold text-[#002147] tracking-tight">SEBI</div>
+                <p className="text-[#888] text-sm mt-1">Registered</p>
               </div>
             </div>
           </div>
@@ -56,12 +56,12 @@ export default function Philosophy() {
                 />
               </div>
               
-              <div className="absolute -bottom-6 -left-6 bg-[#002147] p-6 shadow-xl" aria-label="14% average annualized return">
-                <div className="flex items-baseline gap-1 mb-1">
+              <div className="absolute -bottom-5 -left-5 bg-[#002147] p-5 shadow-xl" aria-label="14% average annualized return">
+                <div className="flex items-baseline gap-1 mb-0.5">
                   <span className="font-serif text-4xl font-bold text-white">14</span>
                   <span className="font-serif text-2xl text-[#E67E22] font-bold">%</span>
                 </div>
-                <p className="text-white/60 text-xs uppercase tracking-wider">
+                <p className="text-white/50 text-[10px] uppercase tracking-wider">
                   Average Annualized Return
                 </p>
               </div>

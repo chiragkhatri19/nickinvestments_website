@@ -36,68 +36,77 @@ export default function Testimonials() {
   const prev = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section data-testid="testimonials-section" className="py-24 lg:py-32 bg-[#f8f9fa]">
-      <div className="max-w-5xl mx-auto px-6 md:px-10">
+    <section data-testid="testimonials-section" className="py-20 lg:py-28 bg-[#f8f9fa]">
+      <div className="max-w-4xl mx-auto px-6 md:px-10">
         <div className="text-center mb-12">
-          <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[#944a00] font-semibold mb-4">
+          <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-[#944a00] font-semibold mb-3">
             Client Testimonials
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-[#002147]">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#002147] tracking-tight">
             Trusted by Investors Like You
           </h2>
         </div>
 
-        <div className="bg-white p-10 md:p-14 shadow-sm mb-8">
+        <div className="bg-white p-8 md:p-12 lg:p-14 mb-8">
           <div className="flex gap-1 mb-6 justify-center">
             {[1, 2, 3, 4, 5].map((s) => (
-              <Star key={s} size={18} fill="#E67E22" stroke="none" className="text-[#E67E22]" />
+              <Star key={s} size={16} fill="#E67E22" stroke="none" className="text-[#E67E22]" />
             ))}
           </div>
           
-          <p className="font-serif text-xl md:text-2xl text-[#002147] text-center leading-relaxed mb-8">
+          <motion.p
+            key={activeIndex}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="font-serif text-lg md:text-xl lg:text-2xl text-[#002147] text-center leading-relaxed mb-10"
+          >
             "{testimonials[activeIndex].quote}"
-          </p>
+          </motion.p>
 
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-12 bg-[#002147] flex items-center justify-center text-white font-bold">
+            <div className="w-11 h-11 bg-[#002147] flex items-center justify-center text-white font-bold text-sm">
               {testimonials[activeIndex].initials}
             </div>
             <div className="text-left">
-              <p className="font-semibold text-[#002147]">
+              <p className="font-semibold text-[#002147] text-[15px]">
                 {testimonials[activeIndex].name}
               </p>
-              <p className="text-[#888] text-sm">
+              <p className="text-[#777] text-sm">
                 {testimonials[activeIndex].title}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex items-center justify-center gap-5">
           <button
             onClick={prev}
-            className="w-10 h-10 border border-[#002147]/20 flex items-center justify-center text-[#002147] hover:bg-[#002147] hover:text-white transition-colors"
+            className="w-10 h-10 border border-[#002147]/15 flex items-center justify-center text-[#002147] hover:bg-[#002147] hover:text-white hover:border-[#002147] transition-colors rounded"
+            aria-label="Previous testimonial"
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={18} />
           </button>
           
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  i === activeIndex ? "bg-[#E67E22]" : "bg-[#002147]/20"
+                className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                  i === activeIndex ? "bg-[#E67E22] w-5" : "bg-[#002147]/20 hover:bg-[#002147]/40"
                 }`}
+                aria-label={`Go to testimonial ${i + 1}`}
               />
             ))}
           </div>
           
           <button
             onClick={next}
-            className="w-10 h-10 bg-[#002147] flex items-center justify-center text-white hover:bg-[#944a00] transition-colors"
+            className="w-10 h-10 bg-[#002147] flex items-center justify-center text-white hover:bg-[#003366] transition-colors rounded"
+            aria-label="Next testimonial"
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={18} />
           </button>
         </div>
       </div>

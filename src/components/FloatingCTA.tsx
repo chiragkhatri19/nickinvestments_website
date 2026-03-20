@@ -20,30 +20,31 @@ export default function FloatingCTA() {
   if (!isVisible) return null
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
         {isExpanded && (
           <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+            initial={{ opacity: 0, y: 15, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="flex flex-col gap-3"
+            exit={{ opacity: 0, y: 15, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="flex flex-col gap-2.5"
           >
             <a
               href="https://wa.me/919876543210?text=Hi, I'm interested in Nick Investments."
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-[#25D366] text-white pl-5 pr-6 py-3 rounded-full shadow-lg whitespace-nowrap hover:bg-[#1ebe5d] transition-colors"
+              className="flex items-center gap-3 bg-[#25D366] text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg hover:shadow-xl whitespace-nowrap hover:bg-[#1ebe5d] transition-all duration-200 hover:scale-105"
             >
-              <MessageCircle size={20} />
+              <MessageCircle size={18} />
               <span className="font-semibold text-sm">WhatsApp</span>
             </a>
 
             <a
               href="tel:+919876543210"
-              className="flex items-center gap-3 bg-[#002147] text-white pl-5 pr-6 py-3 rounded-full shadow-lg whitespace-nowrap hover:bg-[#003366] transition-colors"
+              className="flex items-center gap-3 bg-[#002147] text-white pl-4 pr-5 py-2.5 rounded-full shadow-lg hover:shadow-xl whitespace-nowrap hover:bg-[#003366] transition-all duration-200 hover:scale-105"
             >
-              <Phone size={20} />
+              <Phone size={18} />
               <span className="font-semibold text-sm">Call Now</span>
             </a>
           </motion.div>
@@ -59,13 +60,13 @@ export default function FloatingCTA() {
           onClick={() => setIsExpanded(!isExpanded)}
           size="icon"
           variant={isExpanded ? "destructive" : "default"}
-          className="w-14 h-14 rounded-full shadow-lg"
+          className="w-12 h-12 rounded-full shadow-lg hover:shadow-xl transition-all duration-200 active:scale-95"
           aria-label={isExpanded ? "Close menu" : "Open contact options"}
         >
           {isExpanded ? (
-            <X size={24} className="text-white" />
+            <X size={20} className="text-white" />
           ) : (
-            <MessageCircle size={24} className="text-white" />
+            <MessageCircle size={20} className="text-white" />
           )}
         </Button>
       </motion.div>
