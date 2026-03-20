@@ -1,13 +1,18 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, MessageCircle, CheckCircle, Loader2, ArrowRight } from "lucide-react";
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Phone, MessageCircle, CheckCircle, Loader2, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select } from "@/components/ui/select"
 
 interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  investment: string;
-  message: string;
+  name: string
+  email: string
+  phone: string
+  investment: string
+  message: string
 }
 
 const initialState: FormData = {
@@ -16,7 +21,7 @@ const initialState: FormData = {
   phone: "",
   investment: "Under ₹50L",
   message: "",
-};
+}
 
 const investmentOptions = [
   "Under ₹50L",
@@ -24,27 +29,27 @@ const investmentOptions = [
   "₹1Cr - ₹5Cr",
   "₹5Cr+",
   "Prefer not to say",
-];
+]
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormData>(initialState);
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [form, setForm] = useState<FormData>(initialState)
+  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle")
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("submitting");
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setStatus("success");
-  };
+    e.preventDefault()
+    setStatus("submitting")
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+    setStatus("success")
+  }
 
   return (
-    <section id="contact" data-testid="contact-section" className="py-24 lg:py-32 bg-white">
+    <section id="contact" className="py-24 lg:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <div>
@@ -106,95 +111,84 @@ export default function ContactForm() {
                 </p>
                 <button
                   onClick={() => {
-                    setStatus("idle");
-                    setForm(initialState);
+                    setStatus("idle")
+                    setForm(initialState)
                   }}
-                  className="text-[#944a00] font-semibold text-sm"
+                  className="text-[#944a00] font-semibold text-sm hover:underline"
                 >
                   Submit Another Inquiry
                 </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-[#444] text-sm font-medium mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
                     name="name"
                     value={form.name}
                     onChange={handleChange}
                     required
                     placeholder="Your name"
-                    className="w-full bg-white border border-[#ddd] p-4 outline-none focus:border-[#E67E22] transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-[#444] text-sm font-medium mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email Address *</Label>
+                  <Input
+                    id="email"
                     name="email"
+                    type="email"
                     value={form.email}
                     onChange={handleChange}
                     required
                     placeholder="your.email@example.com"
-                    className="w-full bg-white border border-[#ddd] p-4 outline-none focus:border-[#E67E22] transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-[#444] text-sm font-medium mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone Number *</Label>
+                  <Input
+                    id="phone"
                     name="phone"
+                    type="tel"
                     value={form.phone}
                     onChange={handleChange}
                     required
                     placeholder="+91 XXXXX XXXXX"
-                    className="w-full bg-white border border-[#ddd] p-4 outline-none focus:border-[#E67E22] transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-[#444] text-sm font-medium mb-2">
-                    Investment Range
-                  </label>
-                  <select
+                <div className="space-y-2">
+                  <Label htmlFor="investment">Investment Range</Label>
+                  <Select
+                    id="investment"
                     name="investment"
                     value={form.investment}
                     onChange={handleChange}
-                    className="w-full bg-white border border-[#ddd] p-4 outline-none focus:border-[#E67E22] transition-colors"
                   >
                     {investmentOptions.map((opt) => (
                       <option key={opt} value={opt}>{opt}</option>
                     ))}
-                  </select>
+                  </Select>
                 </div>
 
-                <div>
-                  <label className="block text-[#444] text-sm font-medium mb-2">
-                    Message
-                  </label>
-                  <textarea
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     rows={4}
                     placeholder="Tell us about your investment goals..."
-                    className="w-full bg-white border border-[#ddd] p-4 outline-none focus:border-[#E67E22] transition-colors resize-none"
                   />
                 </div>
 
-                <button
+                <Button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full bg-[#E67E22] text-white py-4 font-semibold hover:bg-[#d4711d] transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                  className="w-full"
                 >
                   {status === "submitting" ? (
                     <>
@@ -207,12 +201,12 @@ export default function ContactForm() {
                       <ArrowRight size={16} />
                     </>
                   )}
-                </button>
+                </Button>
               </form>
             )}
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

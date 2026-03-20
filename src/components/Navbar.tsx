@@ -1,36 +1,37 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Phone, MessageCircle, Menu, X, ArrowRight } from "lucide-react";
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Phone, MessageCircle, Menu, X, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("");
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState("")
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", handler, { passive: true });
-    handler();
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
+    const handler = () => setScrolled(window.scrollY > 80)
+    window.addEventListener("scroll", handler, { passive: true })
+    handler()
+    return () => window.removeEventListener("scroll", handler)
+  }, [])
 
   useEffect(() => {
     if (mobileOpen) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""
     }
-    return () => { document.body.style.overflow = ""; };
-  }, [mobileOpen]);
+    return () => { document.body.style.overflow = "" }
+  }, [mobileOpen])
 
   const links = [
     { label: "Services", href: "#services" },
     { label: "About", href: "#philosophy" },
     { label: "Process", href: "#process" },
     { label: "Contact", href: "#contact" },
-  ];
+  ]
 
   return (
     <>
@@ -58,7 +59,7 @@ export default function Navbar() {
               <div className={`w-10 h-10 rounded flex items-center justify-center transition-colors duration-300 ${
                 scrolled ? "bg-[#002147]" : "bg-white/10"
               }`}>
-                <span className={`font-serif font-bold text-lg ${scrolled ? "text-white" : "text-white"}`}>N</span>
+                <span className="font-serif font-bold text-lg text-white">N</span>
               </div>
               <div className="flex flex-col">
                 <span className={`font-serif font-bold text-lg tracking-tight leading-none transition-colors duration-300 ${
@@ -75,8 +76,8 @@ export default function Navbar() {
             </motion.a>
 
             <div className="hidden lg:flex items-center gap-2">
-              {links.map((link, i) => (
-                <motion.a
+              {links.map((link) => (
+                <a
                   key={link.href}
                   href={link.href}
                   className={`relative px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
@@ -86,8 +87,6 @@ export default function Navbar() {
                   }`}
                   onMouseEnter={() => setActiveLink(link.href)}
                   onMouseLeave={() => setActiveLink("")}
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
                 >
                   {link.label}
                   {activeLink === link.href && (
@@ -96,57 +95,51 @@ export default function Navbar() {
                       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-[2px] bg-[#E67E22] rounded-full"
                     />
                   )}
-                </motion.a>
+                </a>
               ))}
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-              <motion.a
+              <a
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2.5 bg-[#25D366] text-white px-5 py-2.5 text-sm font-semibold rounded hover:bg-[#20bd5a] transition-all duration-300 group"
+                className="flex items-center gap-2 bg-[#25D366] text-white px-5 py-2.5 text-sm font-semibold rounded hover:bg-[#20bd5a] transition-colors"
               >
-                <MessageCircle size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+                <MessageCircle size={16} />
                 <span>WhatsApp</span>
-              </motion.a>
+              </a>
 
-              <motion.a
+              <a
                 href="tel:+919876543210"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2.5 bg-[#E67E22] text-white px-5 py-2.5 text-sm font-semibold rounded hover:bg-[#d4711d] transition-all duration-300 group"
+                className="flex items-center gap-2 bg-[#E67E22] text-white px-5 py-2.5 text-sm font-semibold rounded hover:bg-[#d4711d] transition-colors"
               >
-                <Phone size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+                <Phone size={16} />
                 <span>Call Now</span>
-              </motion.a>
+              </a>
             </div>
 
             <div className="flex items-center gap-2 lg:hidden">
-              <motion.a
+              <a
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileTap={{ scale: 0.95 }}
                 className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
                   scrolled ? "bg-[#25D366] text-white" : "bg-white/20 text-white"
                 }`}
               >
                 <MessageCircle size={18} />
-              </motion.a>
+              </a>
 
-              <motion.button
-                className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                  scrolled ? "bg-[#E67E22] text-white" : "bg-white/20 text-white"
-                }`}
+              <Button
+                variant="ghost"
+                size="icon"
                 onClick={() => setMobileOpen(true)}
+                className={`${scrolled ? "text-[#002147]" : "text-white"} lg:hidden`}
                 aria-label="Open menu"
-                whileTap={{ scale: 0.95 }}
               >
                 <Menu size={20} />
-              </motion.button>
+              </Button>
             </div>
           </div>
         </div>
@@ -181,13 +174,14 @@ export default function Navbar() {
                       <span className="font-sans text-[9px] text-[#708ab5] uppercase tracking-[0.2em] mt-1">Est. 2009</span>
                     </div>
                   </div>
-                  <motion.button
+                  <Button
+                    variant="ghost"
+                    size="icon"
                     onClick={() => setMobileOpen(false)}
-                    className="w-10 h-10 flex items-center justify-center text-[#002147] hover:bg-[#f8f9fa] rounded-full transition-colors"
-                    whileTap={{ scale: 0.95 }}
+                    className="text-[#002147]"
                   >
                     <X size={22} />
-                  </motion.button>
+                  </Button>
                 </div>
 
                 <nav className="flex-1 px-6 py-8">
@@ -199,11 +193,11 @@ export default function Navbar() {
                         onClick={() => setMobileOpen(false)}
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.05, duration: 0.3 }}
+                        transition={{ delay: i * 0.05 }}
                         className="group flex items-center justify-between py-4 px-4 rounded-lg hover:bg-[#f8f9fa] transition-colors"
                       >
                         <span className="text-[#002147] font-medium text-lg">{link.label}</span>
-                        <ArrowRight size={18} className="text-[#E67E22] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300" />
+                        <ArrowRight size={18} className="text-[#E67E22] opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all" />
                       </motion.a>
                     ))}
                   </div>
@@ -212,33 +206,25 @@ export default function Navbar() {
                 <div className="px-6 py-8 border-t border-[#002147]/10 bg-[#f8f9fa]">
                   <p className="text-[#708ab5] text-xs uppercase tracking-wider mb-4 font-medium">Quick Contact</p>
                   <div className="space-y-3">
-                    <motion.a
+                    <a
                       href="https://wa.me/919876543210"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setMobileOpen(false)}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.2 }}
-                      whileTap={{ scale: 0.98 }}
                       className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 font-semibold rounded-lg"
                     >
                       <MessageCircle size={20} />
                       <span>WhatsApp Advisor</span>
-                    </motion.a>
+                    </a>
 
-                    <motion.a
+                    <a
                       href="tel:+919876543210"
                       onClick={() => setMobileOpen(false)}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.25 }}
-                      whileTap={{ scale: 0.98 }}
                       className="flex items-center justify-center gap-3 bg-[#E67E22] text-white py-4 font-semibold rounded-lg"
                     >
                       <Phone size={20} />
                       <span>Call Now: +91 98765 43210</span>
-                    </motion.a>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -247,5 +233,5 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </>
-  );
+  )
 }

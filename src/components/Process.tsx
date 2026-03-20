@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Phone, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion"
+import { Phone, ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 const steps = [
   {
@@ -22,7 +23,7 @@ const steps = [
     title: "Ongoing Management",
     description: "Regular reviews and proactive adjustments ensure your portfolio stays aligned with your evolving goals.",
   },
-];
+]
 
 export default function Process() {
   return (
@@ -91,5 +92,5 @@ export default function Process() {
         </div>
       </div>
     </section>
-  );
+  )
 }

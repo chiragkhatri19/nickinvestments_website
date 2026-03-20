@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
 
 export default function Hero() {
   return (
@@ -35,18 +37,17 @@ export default function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a
-            href="#contact"
-            className="bg-[#E67E22] text-white px-10 py-4 text-sm font-semibold tracking-wide hover:bg-[#d4711d] transition-colors"
-          >
-            Schedule Consultation
+          <a href="#contact">
+            <Button size="lg">
+              Schedule Consultation
+            </Button>
           </a>
 
-          <a
-            href="#services"
-            className="border border-white/30 text-white px-10 py-4 text-sm font-medium tracking-wide hover:bg-white/10 transition-colors"
-          >
-            Our Services
+          <a href="#services">
+            <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 hover:text-white">
+              Our Services
+              <ArrowRight size={16} />
+            </Button>
           </a>
         </div>
       </div>
@@ -57,5 +58,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
+  )
 }
